@@ -17,6 +17,10 @@ function App() {
 
   const askQuestion = async () => {
 
+    if(!question){
+      return false
+    }
+
     if (localStorage.getItem('history')) {
       let history = JSON.parse(localStorage.getItem('history'))
       history = [question, ...history]
@@ -39,14 +43,22 @@ function App() {
 
     // console.log(dataString);
     setResult([...result, { type: 'q', text: question }, { type: 'a', text: dataString }])
+    setQuestion('')
 
   }
 
-  console.log(recentHistory);
 
   const clearHistory = () => {
     localStorage.clear();
     setRecentHistory([])
+  }
+
+  const isEnter=(event)=>{
+   
+    if(event.key=='Enter'){
+      askQuestion();
+    }
+    
   }
 
   return (
@@ -93,7 +105,9 @@ function App() {
         </div>
         <div className='bg-zinc-800 w-1/2 p-1 pr-5 text-white m-auto rounded-4xl
       border border-zinc-700 flex h-16'>
-          <input type="text" value={question} onChange={(event) => setQuestion(event.target.value)} className='w-full h-full p-3 outline-none ' placeholder='Ask me anything' />
+          <input type="text" value={question}
+          onKeyDown={isEnter}
+           onChange={(event) => setQuestion(event.target.value)} className='w-full h-full p-3 outline-none ' placeholder='Ask me anything' />
           <button onClick={askQuestion} >Ask</button>
         </div>
       </div>
