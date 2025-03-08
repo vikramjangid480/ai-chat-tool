@@ -5,8 +5,7 @@ const Answer = ({ ans, totalResult, index }) => {
 
     const [heading, setHeading] = useState(false);
     const [answer, setAnswer] = useState(ans);
-    console.log(index);
-
+ 
 
     useEffect(() => {
         if (checkHeading(ans)) {
