@@ -79,8 +79,27 @@ function App() {
 
   }, [selectedHistory])
 
+  // dark mode feature
+  const [darkMode,setDarkMode]=useState('dark');
+  useEffect(()=>{
+    console.log(darkMode);
+    if(darkMode=='dark'){
+      document.documentElement.classList.add('dark')
+    }else{
+      document.documentElement.classList.remove('dark')
+
+    }
+  },[darkMode])
+  // 
+
   return (
+    <div className={darkMode=='dark'?'dark':'light'}>
     <div className='grid grid-cols-5 h-screen text-center'>
+      <select onChange={(event)=>setDarkMode(event.target.value)} className=' fixed text-white bottom-0 p-5'>
+        <option value="dark" >Dark</option>
+        <option value="light" >Light</option>
+
+      </select>
    <RecentSearch recentHistory={recentHistory} setRecentHistory={setRecentHistory} setSelectedHistory={setSelectedHistory} />
       <div className='col-span-4 p-10'>
         <h1 className='text-4xl bg-clip-text text-transparent bg-gradient-to-r from-pink-700 to-violet-700'
@@ -98,7 +117,7 @@ function App() {
 
 
         <div ref={scrollToAns} className='container h-110 overflow-scroll'>
-          <div className='text-zinc-300'>
+          <div className='dark:text-zinc-300 text-zinc-800'>
             <ul>
               {
                 result.map((item, index) => (
@@ -111,7 +130,7 @@ function App() {
 
           </div>
         </div>
-        <div className='bg-zinc-800 w-1/2 p-1 pr-5 text-white m-auto rounded-4xl
+        <div className='dark:bg-zinc-800 bg-red-100 w-1/2 p-1 pr-5 dark:text-white text-zinc-800  m-auto rounded-4xl
       border border-zinc-700 flex h-16'>
           <input type="text" value={question}
             onKeyDown={isEnter}
@@ -121,6 +140,7 @@ function App() {
       </div>
     
     
+    </div>
     </div>
   )
 }
