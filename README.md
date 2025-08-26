@@ -28,8 +28,6 @@ This project allows users to chat with an AI assistant in real-time, with clean 
 
 ## 📂 Project Structure
 
-```
-
 react-ai-tool/
 ├── public/          # Static assets
 ├── src/
@@ -41,8 +39,6 @@ react-ai-tool/
 ├── package.json
 ├── vite.config.js
 └── README.md
-
-````
 
 ---
 
@@ -63,7 +59,7 @@ react-ai-tool/
    ```bash
    git clone https://github.com/vikramjangid480/ai-chat-tool.git
    cd ai-chat-tool
-````
+
 
 2. **Install dependencies**
 
