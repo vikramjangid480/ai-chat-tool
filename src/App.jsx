@@ -120,7 +120,7 @@ function App() {
         }
 
 
-        <div ref={scrollToAns} className='container h-110 overflow-scroll'>
+        <div ref={scrollToAns} className='container h-110'>
           <div className='dark:text-zinc-300 text-zinc-800'>
             <ul>
               {
